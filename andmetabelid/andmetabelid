@@ -1,0 +1,2 @@
+idea
+CREATE TABLE `if20_sofia1`.`if20_sofia1` ( `if_myideas` INT(4) NOT NULL AUTO_INCREMENT , `idea` VARCHAR(256) NOT NULL , `deleted` DATETIME NOT NULL , PRIMARY KEY (`if_myideas`)) ENGINE = InnoDB;
