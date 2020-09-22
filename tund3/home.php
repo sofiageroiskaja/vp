@@ -1,5 +1,4 @@
 <?php
-	
 	$username = "Sofia Geroiskaja";
 	//$fulltimenow = date("d.m.Y H:i:s");
 	$timenow = date("H:i:s");
@@ -109,12 +108,15 @@
    ." " .$daynow ." " .$monthnameset [$monthnow -1] ." " .$yearnow. ", kell on " .$timenow .", semestri algusest on möödunud " .$fromsemesterstartdays ." päeva";?>.
    <ul>
      <li><a href = "ideainput.php">Siia saad sisestada oma mõtte!</a></li>
-     <li><a href="ideasubmit.php">Siit saad vaadata oma sisestatud mõtteid!</a></li>
+     <li><a href="ideasubmit.php">Siit saad vaadata oma sisestatud mõtteid</a></li>
+	 <li><a href="filmsubmit.php">Filmid!</a></li>
+	 <li><a href="addfilms.php">Filmiinfo lisamine!</a></li>
     </ul>
   <p><?php echo "Praegu on " .$partofday ."." ; ?></p>
   <p><?php echo $semesterinfo; ?></p>
   <hr>
   <?php echo $imghtml;?>
-  <?php echo $ideahtml; ?>
+  <hr>
+  
 </body>
 </html>
