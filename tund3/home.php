@@ -111,7 +111,7 @@
      <li><a href="ideasubmit.php">Siit saad vaadata oma sisestatud mõtteid</a></li>
 	 <li><a href="filmsubmit.php">Filmid!</a></li>
 	 <li><a href="addfilms.php">Filmiinfo lisamine!</a></li>
-	 <li><a href="register.php">Sisselogimine</a></li>
+	 <li><a href="register.php">Uue kasutajakonto loomine</a></li>
     </ul>
   <p><?php echo "Praegu on " .$partofday ."." ; ?></p>
   <p><?php echo $semesterinfo; ?></p>
