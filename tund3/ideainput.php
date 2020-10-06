@@ -31,13 +31,12 @@ $database = "if20_sofia1";
   <li><a href="home.php">Tagasi pealehele!</a></li>
 </ul>
 
-<hr>
   <form method="POST">
   <label>Sisesta oma pahe tulnud mõte!</label>
   <input type="text" name="ideainput" placeholder="Kirjuta siia mõte">
   <input type="submit" name="ideasubmit" value="Saada mõte ara!">
   </form>
-  <hr>
+
   
 </body>
 </html>

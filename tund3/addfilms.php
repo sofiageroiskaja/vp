@@ -3,8 +3,8 @@
 	require("fnc_films.php");
 	//$database = "if20_sofia_ge_1";
 
-$inputerror = "";
 //kui klikiti submit, siis...
+$inputerror = "";
 if(isset($_POST["filmsubmit"])){
 	if(empty($_POST["titleinput"]) or empty($_POST["genreinput"]) or empty($_POST["studioinput"]) or empty($_POST["directorinput"])){
 		$inputerror .= "Osa infot on sisestamata! ";
@@ -62,3 +62,4 @@ require("header.php");
 
 </body>
 </html>
+
