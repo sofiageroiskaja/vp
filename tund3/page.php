@@ -1,10 +1,11 @@
 <?php
+	//käivitame sessiooni
+	require("../../../config.php");
+	require("fnc_common.php");
+	require("fnc_user.php");
+	require("usesession.php");
 
-require("../../../config.php");
-require("fnc_common.php");
-require("fnc_user.php");
-
-	$username = "Sofia Geroiskaja";
+	//$username = "Sofia Geroiskaja";
 	$fulltimenow = date("d.m.Y H:i:s");
 	$hournow = date("H");
 	$partofday = "lihtsalt aeg";
@@ -133,7 +134,7 @@ require("fnc_user.php");
 ?>
 
   <img src="../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse bänner">
-  <h1>Sofia Geroiskaja</h1>
+  <h1>Tere tulemast veebilehele</h1>
   <p>See veebileht on loodud õppetöö kaigus ning ei sisalda mingit tõsiseltvõetavat sisu!</p>
   <p>See veebileht on tehtud veebiprogrammeerimise kursusel aasta 2020 sügissemestril <a href="http://www.tlu.ee"> Tallinna Ülikooli</a> Digitehnoloogiate instituudis.</p>
  
@@ -151,7 +152,7 @@ require("fnc_user.php");
 	  <input name="submituserdata" type="submit" value="Logi sisse"><span><?php echo "&nbsp; &nbsp; &nbsp;" .$notice; ?></span>
   </form>
   <hr>
-  <p>Loo <a href="addnewuser.php">kasutajakonto</a></p>
+  <p>Loo <a href="register.php">kasutajakonto</a></p>
   <hr>
   <p>Lehe avamise aeg: <?php echo $weekdaynameset[$weekdaynow - 1] .", " .$fulltimenow; ?>. 
   
