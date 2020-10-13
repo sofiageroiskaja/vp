@@ -38,17 +38,18 @@ require("header.php");
 <h1><?php echo $_SESSION["userfirstname"] ." " .$_SESSION["userlastname"]; ?></h1>
 <p>See veebileht on loodud oppetoo kaigus ning ei sisalda mingit tosiseltvoetavat sisu!</p>
 <p>See veebieht on loodud veebiprogrammeerimise kursusel aasta 2020 sugissemestril<a href="http://www.tlu.ee"> Tallinna Ulikooli</a> Digitehnoloogiate instituudis.</p>
- <hr>
-  <h1>Filmi list:</h1>
-  <hr>
-  <?phhp echo readfilms(); ?>
-  <?php echo $filmhtml; ?>
-  <hr>
-
-<ul>
+ <ul>
   <li><a href="home.php">Tagasi pealehele!</a></li>
   <li><a href="?logout=1">Logi välja</a>!</li>   
 </ul>
+
+ <hr>
+  <h1>Filmi list:</h1>
+  <hr>
+  <?php echo readfilms(); ?>
+  <?php echo $filmhtml; ?>
+  <hr>
+
 
 
 

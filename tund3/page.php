@@ -3,7 +3,7 @@
 	require("../../../config.php");
 	require("fnc_common.php");
 	require("fnc_user.php");
-	require("usesession.php");
+	session_start();
 
 	//$username = "Sofia Geroiskaja";
 	$fulltimenow = date("d.m.Y H:i:s");

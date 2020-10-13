@@ -15,7 +15,8 @@
 	 <li><a href="filmsubmit.php">Filmid!</a></li>
 	 <li><a href="addfilms.php">Filmiinfo lisamine!</a></li>
 	 <li><a href="userprofile.php">Minu kasutajaprofiil</a></li>
-	 <li><a href="addfilmrelationgenre.php">Filmi ja žanri seose määramine</a></li>
+	 <li><a href="addfilmrelations.php">Filmi ja žanri seose määramine</a></li>
+	 <li><a href="listfilmpersons.php">Filmi tegelased</a></li>
     </ul>
 
   
