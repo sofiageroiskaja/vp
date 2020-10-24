@@ -94,11 +94,11 @@
 	<li><a href="?logout=1">Logi välja!</a></li>
   </ul>
   <hr />
-  <h2>Lisame tsitaadi</h2>
+  <h2>Tsitaadi lisamine</h2>
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <label for="filmdescriptioninput">Tsitaat</label>
   <br />
-  <textarea rows="1" cols="39" name="quoteinput" id="quoteinput" placeholder="Tsitaat..."><?php echo $quote; ?></textarea>
+  <textarea rows="1" cols="39" name="quoteinput" id="quoteinput" placeholder="Tsitaat"><?php echo $quote; ?></textarea>
   <br />
 	<?php
 		echo $roleselect;

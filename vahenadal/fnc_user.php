@@ -53,6 +53,7 @@ function signup($firstname, $lastname, $email, $gender, $birthdate, $password){
 					$_SESSION["userlastname"] = $lastnamefromdb;
 					
 					//värvid tuleb lugeda profiilist, kui see on olemas
+					$stmt->close();
 					$stmt = $conn->prepare("SELECT bgcolor, txtcolor FROM vpuserprofiles WHERE userid = ?");
                     echo $conn->error;
                     $stmt->bind_param("i", $_SESSION["userid"]);

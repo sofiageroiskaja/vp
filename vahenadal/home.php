@@ -13,7 +13,7 @@
      <li><a href="page.php">Tagasi pealehele</a></li>
 	 <li><a href="filminfo.php">Loe filmiinfot</a></li>
 	 <li><a href="addfilminfo.php">Filmiinfo lisamine</a></li>
-	 <li><a href="addrelation.php">Seoste lisamine</a></li>
+	 <li><a href="addfilmrelations.php">Seoste lisamine</a></li>
 	 <li><a href="addquote.php">Tsitaadi lisamine</a></li>
 	 <li><a href="vanadlingid.php">Vanad Failid</a></li>
 	 <li><a href="userprofile.php">Minu kasutajaprofiil</a></li>
