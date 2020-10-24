@@ -27,7 +27,7 @@ function saveperson($firstname, $lastname, $birthdate) {
 	$stmt->close();
 	$conn->close();
 	return $notice;
-} // saveperson lõpeb
+} 
 
 // Salvesta film
 function savefilm($title, $productionyear, $duration, $filmdescription) {
@@ -55,7 +55,7 @@ function savefilm($title, $productionyear, $duration, $filmdescription) {
 	$stmt->close();
 	$conn->close();
 	return $notice;
-} // savefilm lõpeb
+} 
 
 //Salvesta žanr
 function savefilmgenre($filmgenreinput, $genredescriptioninput) {
@@ -83,7 +83,7 @@ function savefilmgenre($filmgenreinput, $genredescriptioninput) {
 	$stmt->close();
 	$conn->close();
 	return $notice;
-} // savefilmgenre lõpeb
+} 
 
 // Salvesta filmistuudio
 	function savestudio($studionameinput, $studioaddressinput) {
@@ -111,7 +111,7 @@ function savefilmgenre($filmgenreinput, $genredescriptioninput) {
 		$stmt->close();
 		$conn->close();
 		return $notice;
-	} // savestudio lõpeb
+	}
 
 	// Salvesta amet
 	function saveposition($position, $positiondescription) {
@@ -139,4 +139,4 @@ function savefilmgenre($filmgenreinput, $genredescriptioninput) {
 		$stmt->close();
 		$conn->close();
 		return $notice;
-	} // saveposition lõpeb
+	} 

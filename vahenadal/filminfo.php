@@ -2,7 +2,7 @@
 
   require("usesession.php");
   require("../../../config.php");
-  require("fnc_filmrelations.php");
+  require("fnc_readfilminfo.php");
   
 
   $sortby = 0;
