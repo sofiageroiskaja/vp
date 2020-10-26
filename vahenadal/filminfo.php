@@ -32,15 +32,7 @@
 	<li><a href="home.php">Tagasi pealehele</a></li>
 	<li><a href="?logout=1">Logi välja!</a></li>
   </ul>
-  <br />
-  <a href="#personmovie">Isikud filmis</a> &#124; 
-  <a href="#quotes">Tsitaadid</a> &#124; 
-  <a href="#persons">Isikud</a> &#124; 
-  <a href="#films">Filmid</a> &#124; 
-  <a href="#genres">Žanrid</a> &#124; 
-  <a href="#studios">Filmistuudiod</a> &#124; 
-  <a href="#positions">Ametikohad filmis</a>
-  <hr />
+  <hr>
   <div id="personmovie">
     <h2>Isikud Filmis</h2>
     <?php 

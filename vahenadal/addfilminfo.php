@@ -46,71 +46,6 @@
   $durationerror = "";
   $positionerror = "";
 
-  // Kui klikiti isiku submit, siis ...
-  if(isset($_POST["personsubmit"])) {
-    if(empty($_POST["firstnameinput"])) {
-        $firstnameerror = "Eesnimi on sisestamata!";
-    }
-    else {
-      $firstname = test_input($_POST["firstnameinput"]);
-    }
-
-    if(empty($_POST["lastnameinput"])) {
-      $lastnameerror = "Perekonnanimi on sisestamata!";
-    }
-    else {
-      $lastname = test_input($_POST["lastnameinput"]);
-    }
-  
-    if(!empty($_POST["birthdayinput"])) {
-      $birthday = intval($_POST["birthdayinput"]);
-    }
-    else {
-      $birthdayerror = "Palun vali sünnikuupäev!";
-    }
-    
-    if(!empty($_POST["birthmonthinput"])) {
-      $birthmonth = intval($_POST["birthmonthinput"]);
-    }
-    else {
-      $birthmontherror = "Palun vali sünnikuu!";
-    }
-    
-    if(!empty($_POST["birthyearinput"])) {
-      $birthyear = intval($_POST["birthyearinput"]);
-    }
-    else {
-      $birthyearerror = "Palun vali sünniaasta!";
-    }
-    
-    // Kontrollime kuupäeva kehtivust
-    if(!empty($birthday) and !empty($birthmonth) and !empty($birthyear)) {
-      if(checkdate($birthmonth, $birthday, $birthyear)) {
-        $tempdate = new DateTime($birthyear ."-" .$birthmonth ."-" .$birthday);
-        $birthdate = $tempdate->format("Y-m-d");
-      }
-      else {
-        $birthdateerror = "Kuupäev ei ole reaalne!";
-      }
-    }
-
-    if(empty($firstnameerror) and empty($lastnameerror) and empty($birthdayerror) and empty($birthmontherror) and empty($birthyearerror) and empty($birthdateerror)) {
-      $result = saveperson($firstname, $lastname, $birthdate);
-      if($result == "OK") {
-        $personnotice = "Isik salvestatud!";
-        $firstname = "";
-        $lastname = "";
-        $birthday = null;
-        $birthmonth = null;
-        $birthyear = null;
-        $birthdate = null;
-      }
-      else {
-        $personnotice = $result;
-      }    
-    }
-  }
-
   // Kui klikiti film submit, siis ...
   if(isset($_POST["filmsubmit"]))  {
     $filmdescription = test_input($_POST["filmdescriptioninput"]);
@@ -194,6 +129,71 @@
       }
     }
   }
+  
+   // Kui klikiti isiku submit, siis ...
+  if(isset($_POST["personsubmit"])) {
+    if(empty($_POST["firstnameinput"])) {
+        $firstnameerror = "Eesnimi on sisestamata!";
+    }
+    else {
+      $firstname = test_input($_POST["firstnameinput"]);
+    }
+
+    if(empty($_POST["lastnameinput"])) {
+      $lastnameerror = "Perekonnanimi on sisestamata!";
+    }
+    else {
+      $lastname = test_input($_POST["lastnameinput"]);
+    }
+  
+    if(!empty($_POST["birthdayinput"])) {
+      $birthday = intval($_POST["birthdayinput"]);
+    }
+    else {
+      $birthdayerror = "Palun vali sünnikuupäev!";
+    }
+    
+    if(!empty($_POST["birthmonthinput"])) {
+      $birthmonth = intval($_POST["birthmonthinput"]);
+    }
+    else {
+      $birthmontherror = "Palun vali sünnikuu!";
+    }
+    
+    if(!empty($_POST["birthyearinput"])) {
+      $birthyear = intval($_POST["birthyearinput"]);
+    }
+    else {
+      $birthyearerror = "Palun vali sünniaasta!";
+    }
+    
+    // Kontrollime kuupäeva kehtivust
+    if(!empty($birthday) and !empty($birthmonth) and !empty($birthyear)) {
+      if(checkdate($birthmonth, $birthday, $birthyear)) {
+        $tempdate = new DateTime($birthyear ."-" .$birthmonth ."-" .$birthday);
+        $birthdate = $tempdate->format("Y-m-d");
+      }
+      else {
+        $birthdateerror = "Kuupäev ei ole reaalne!";
+      }
+    }
+
+    if(empty($firstnameerror) and empty($lastnameerror) and empty($birthdayerror) and empty($birthmontherror) and empty($birthyearerror) and empty($birthdateerror)) {
+      $result = saveperson($firstname, $lastname, $birthdate);
+      if($result == "OK") {
+        $personnotice = "Isik salvestatud!";
+        $firstname = "";
+        $lastname = "";
+        $birthday = null;
+        $birthmonth = null;
+        $birthyear = null;
+        $birthdate = null;
+      }
+      else {
+        $personnotice = $result;
+      }    
+    }
+  }
 
   // Kui klikiti position submit, siis ...
   if(isset($_POST["positionsubmit"]))  {
@@ -230,18 +230,68 @@
 	<li><a href="home.php">Tagasi pealehele</a></li>
 	<li><a href="?logout=1">Logi välja!</a></li>
   </ul>
-  <hr />
-  <h2>Lisa isik</h2>
+  <hr>
+  <h2>Lisa film</h2>
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <label for="titleinput">Filmi pealkiri</label>
+    <input type="text" name="titleinput" id="titleinput" placeholder="Filmi pealkiri" value="<?php echo $title; ?>">
+    <span><?php echo $titleerror; ?></span>
+    <br />
+    <label for="productionyearinput">Tootmisaasta</label>
+    <input type="number" name="productionyearinput" id="productionyearinput" placeholder="<?php echo date("Y"); ?>" value="<?php echo $productionyear; ?>">
+    <span><?php echo $productionyearerror; ?></span>
+    <br />
+    <label for="durationinput">Filmi kestus minutites</label>
+    <input type="number" name="durationinput" id="durationinput" placeholder="90" value="<?php echo $duration; ?>">
+    <span><?php echo $durationerror; ?></span>
+    <br />
+    <label for="filmdescriptioninput">Filmi lühikirjeldus</label>
+    <br />
+    <textarea rows="5" cols="30" name="filmdescriptioninput" id="filmdescriptioninput" placeholder="Filmi lühitutvustus"><?php echo $filmdescription; ?></textarea>
+    <br />
+    <input type="submit" name="filmsubmit" value="Salvesta filmi info">
+  </form>
+  <p><?php echo $filmnotice; ?></p>
+
+  <h2>Lisa filmi žanr</h2>
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <label for="filmgenreinput">Žanri nimi</label>
+    <input type="text" name="filmgenreinput" id="filmgenreinput" placeholder="Žanri nimi" value="<?php echo $filmgenre; ?>">
+    <span><?php echo $filmgenreerror; ?></span>
+    <br />
+    <label for="genredescriptioninput">Žanri lühitutvustus</label>
+    <br />
+    <textarea rows="5" cols="30" name="genredescriptioninput" id="genredescriptioninput" placeholder="Žanri lühitutvustus"><?php echo $genredescription; ?></textarea>
+    <br />
+    <input type="submit" name="filmgenresubmit" value="Salvesta filmižanri info">
+  </form>
+  <p><?php echo $filmgenrenotice; ?></p>
+
+  <h2>Lisa filmistuudio</h2>
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+	<label for="studionameinput">Stuudio nimi</label>
+	<input type="text" name="studionameinput" id="studionameinput" placeholder="Stuudio nimi">
+  <span><?php echo $studioerror; ?></span>
+	<br />
+	<label for="studioaddressinput">Stuudio aadress</label>
+	<br />
+	<textarea rows="5" cols="30" name="studioaddressinput" id="studioaddressinput" placeholder="Aadress: "><?php echo $studioaddress; ?></textarea>
+	<br />
+	<input type="submit" name="studiosubmit" value="Salvesta filmistuudio info">
+  </form>
+  <p><?php echo $studionotice; ?></p>
+  
+    <h2>Lisa isik</h2>
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	<label for="firstnameinput">Isiku eesnimi</label>
 	<input type="text" name="firstnameinput" id="firstnameinput" placeholder="Eesnimi" value="<?php echo $firstname; ?>">
   <span><?php echo $firstnameerror; ?></span>
 	<br /><br />
-  <label for="lastnameinput">Isiku perkonnanimi</label>
+  <label for="lastnameinput">Isiku perekonnanimi</label>
 	<input type="text" name="lastnameinput" id="lastnameinput" placeholder="Perekonnanimi" value="<?php echo $lastname; ?>">
   <span><?php echo $lastnameerror; ?></span>
 	<br /><br />
-  <label for="birthdayinput">Sünnipäev: </label>
+  <label for="birthdayinput">Isiku sünnipäev: </label>
   <?php
   echo '<select name="birthdayinput" id="birthdayinput">' ."\n";
   echo "\t\t" .'<option value="" selected disabled>päev</option>' ."\n";
@@ -287,57 +337,7 @@
   </form>
   <p><?php echo $personnotice; ?></p>
 
-  <h2>Lisa film</h2>
-  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <label for="titleinput">Filmi pealkiri</label>
-    <input type="text" name="titleinput" id="titleinput" placeholder="Filmi pealkiri" value="<?php echo $title; ?>">
-    <span><?php echo $titleerror; ?></span>
-    <br />
-    <label for="productionyearinput">Tootmisaasta</label>
-    <input type="number" name="productionyearinput" id="productionyearinput" placeholder="<?php echo date("Y"); ?>" value="<?php echo $productionyear; ?>">
-    <span><?php echo $productionyearerror; ?></span>
-    <br />
-    <label for="durationinput">Filmi kestus</label>
-    <input type="number" name="durationinput" id="durationinput" placeholder="90" value="<?php echo $duration; ?>">
-    <span><?php echo $durationerror; ?></span>
-    <br />
-    <label for="filmdescriptioninput">Filmi lühikirjeldus</label>
-    <br />
-    <textarea rows="5" cols="30" name="filmdescriptioninput" id="filmdescriptioninput" placeholder="Filmi lühitutvustus"><?php echo $filmdescription; ?></textarea>
-    <br />
-    <input type="submit" name="filmsubmit" value="Salvesta filmi info">
-  </form>
-  <p><?php echo $filmnotice; ?></p>
-
-  <h2>Lisa žanr</h2>
-  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <label for="filmgenreinput">Žanri nimi</label>
-    <input type="text" name="filmgenreinput" id="filmgenreinput" placeholder="Žanri nimi" value="<?php echo $filmgenre; ?>">
-    <span><?php echo $filmgenreerror; ?></span>
-    <br />
-    <label for="genredescriptioninput">Žanri lühitutvustus</label>
-    <br />
-    <textarea rows="5" cols="30" name="genredescriptioninput" id="genredescriptioninput" placeholder="Žanri lühitutvustus"><?php echo $genredescription; ?></textarea>
-    <br />
-    <input type="submit" name="filmgenresubmit" value="Salvesta filmižanri info">
-  </form>
-  <p><?php echo $filmgenrenotice; ?></p>
-
-  <h2>Lisa filmistuudio</h2>
-  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-	<label for="studionameinput">Stuudio nimi</label>
-	<input type="text" name="studionameinput" id="studionameinput" placeholder="Stuudio nimi">
-  <span><?php echo $studioerror; ?></span>
-	<br />
-	<label for="studioaddressinput">Stuudio aadress</label>
-	<br />
-	<textarea rows="5" cols="30" name="studioaddressinput" id="studioaddressinput" placeholder="Aadress: "><?php echo $studioaddress; ?></textarea>
-	<br />
-	<input type="submit" name="studiosubmit" value="Salvesta filmistuudio info">
-  </form>
-  <p><?php echo $studionotice; ?></p>
-
-  <h2>Lisa ametikoht</h2>
+  <h2>Lisa isiku amet</h2>
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <label for="positioninput">Ameti nimi</label>
     <input type="text" name="positioninput" id="positioninput" placeholder="Ameti nimi" value="<?php echo $filmgenre; ?>">
