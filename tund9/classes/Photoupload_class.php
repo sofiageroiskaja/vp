@@ -5,7 +5,6 @@ class Photoupload{
 	private $photofiletype;
 	private $mytempimage;
 	private $mynewtempimage;
-	private $watermark;
 	
 	function __construct($photoinput, $filetype){
 		$this->photoinput = $photoinput;
