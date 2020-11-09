@@ -28,20 +28,12 @@ if(isset($_POST["photosubmit"])){
 	$alttext = test_input($_POST["altinput"]);
 	//var_dump($_POST);
 	//var_dump($_FILES);
-	//kas on pilt ja mis tüüpi
-	$check = getimagesize($_FILES["photoinput"]["tmp_name"]);
-	if($check !== false){
-		//var_dump($check);
-		if($check["mime"] == "image/jpeg"){
-			$filetype = "jpg";
-		}
-		if($check["mime"] == "image/png"){
-			$filetype = "png";
-		}
-		if($check["mime"] == "image/gif"){
-			$filetype = "gif";
-		}
-	} else{
+	
+	// võtame kasutusele klassi
+	$myphoto = new Photoupload($_FILES["photoinput"]);
+	
+	// Kas on pilt
+	if($myphoto->imageType() == 0){
 		$inputerror = "Valitud fail ei ole pilt! ";
 	}
 	
@@ -87,7 +79,7 @@ if(isset($_POST["photosubmit"])){
 		} else {
 			$inputerror .= " Pisipildi salvestamisel tekkis tõrge! ";
 		}
-		//eemaldan klasii
+		//eemaldan klassi
 		unset($myphoto);
 		//salvestame originaalpildi
 		if(empty($inputerror)){

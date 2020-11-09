@@ -5,6 +5,7 @@ class Photoupload{
 	private $photofiletype;
 	private $mytempimage;
 	private $mynewtempimage;
+
 	
 	function __construct($photoinput, $filetype){
 		$this->photoinput = $photoinput;
@@ -109,6 +110,15 @@ class Photoupload{
 			}
 		}
 		imagedestroy($this->mynewtempimage);
+		return $notice;
+	}
+	public function saveoriginalphoto($target){
+		4notice = null;
+		if(move_uploaded_file($this->uploadedphoto["tmp_name"], $target)){
+			$notice .= 1;
+		} else{
+			$error .= 0;
+		}
 		return $notice;
 	}
 }//class loppeb
