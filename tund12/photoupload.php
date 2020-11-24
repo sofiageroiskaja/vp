@@ -4,16 +4,17 @@
 	require("fnc_photo.php");
     require("fnc_common.php");
 	require("classes/Photoupload_class.php");
+	
+	$photouploaddir_orig = "../photoupload_orig/";
+    $photouploaddir_normal = "../photoupload_normal/";
+    $photouploaddir_thumb = "../photoupload_thumb/";
 
-  $tolink = '<script src="javascript/checkfilesize.js" defer></script>' ."\n"; 
-   
+  $tolink = '<script src="javascript/checkfilesize.js" defer></script>' ."\n";
+    
   $inputerror = "";
   $notice = null;
   $filetype = null;
   $filesizelimit = 2097152;//1048576;
-  $photouploaddir_orig = "../photoupload_orig/";
-  $photouploaddir_normal = "../photoupload_normal/";
-  $photouploaddir_thumb = "../photoupload_thumb/";
   $watermark = "../img/vp_logo_w100_overlay.png";
   $filenameprefix = "vp_";
   $filename = null;
@@ -22,8 +23,8 @@
   $thumbsize = 100;
   $privacy = 1;
   $alttext = null;
-
-//kui klikiti submit, siis ...
+    
+  //kui klikiti submit, siis ...
   if(isset($_POST["photosubmit"])){
 	$privacy = intval($_POST["privinput"]);
 	$alttext = test_input($_POST["altinput"]);
@@ -112,47 +113,45 @@
 		
 	}
   }
+  
 
-require("header.php");
-
+  require("header.php");
 ?>
-
-<img src="../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse bänner">
-<p>See veebileht on loodud oppetoo kaigus ning ei sisalda mingit tosiseltvoetavat sisu!</p>
-<p>See veebieht on loodud veebiprogrammeerimise kursusel aasta 2020 sugissemestril<a href="http://www.tlu.ee"> Tallinna Ulikooli</a> Digitehnoloogiate instituudis.</p>
-<ul>
-  <li><a href="home.php">Tagasi pealehele!</a></li>
-  <li><a href="?logout=1">Logi välja</a>!</li>   
-</ul>
-
-
-<hr>
-<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
-	<label for="photoinput">Vali pildifail!</label>
-		<input id="photoinput" name="photoinput" type="file" required>
-		<br>
-		<label for="altinput">Lisa pildi lühikirjeldus (alternatiivtekst)</label>
-		<input id="altinput" name="altinput" type="text" value="<?php echo $alttext; ?>">
-		<br>
-		<label>Privaatsustase:</label>
-		<br>
-		<input id="privinput1" name="privinput" type="radio" value="1" <?php if($privacy == 1){echo " checked";} ?>>
-		<label for="privinput1">Privaatne (ainult ise näen)</label>
-		<input id="privinput2" name="privinput" type="radio" value="2" <?php if($privacy == 2){echo " checked";} ?>>
-		<label for="privinput2">Klubi liikmetele (sisseloginud kasutavad näevad)</label>
-		<input id="privinput3" name="privinput" type="radio" value="3" <?php if($privacy == 3){echo " checked";} ?>>
-		<label for="privinput3">Avalik (kõik näevad)</label>
-		<br>
-		<input type="submit" id="photosubmit" name="photosubmit" value="Lae foto üles">
-	</form>
-	<p id="notice">
-	<?php
-		echo $inputerror;
-		echo $notice;
-	?>
-	</p>
-
-
-
+  <h1><?php echo $_SESSION["userfirstname"] ." " .$_SESSION["userlastname"]; ?></h1>
+  <p>See veebileht on loodud õppetöö kaigus ning ei sisalda mingit tõsiseltvõetavat sisu!</p>
+  <p>See konkreetne leht on loodud veebiprogrammeerimise kursusel aasta 2020 sügissemestril <a href="https://www.tlu.ee">Tallinna Ülikooli</a> Digitehnoloogiate instituudis.</p>
+  
+  <ul>
+    <li><a href="?logout=1">Logi välja</a>!</li>
+    <li><a href="home.php">Avaleht</a></li>
+  </ul>
+  
+  <hr>
+  
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
+    <label for="photoinput">Vali pildifail!</label>
+	<input id="photoinput" name="photoinput" type="file" required>
+	<br>
+	<label for="altinput">Lisa pildi lühikirjeldus (alternatiivtekst)</label>
+	<input id="altinput" name="altinput" type="text" value="<?php echo $alttext; ?>">
+	<br>
+	<label>Privaatsustase</label>
+	<br>
+	<input id="privinput1" name="privinput" type="radio" value="1" <?php if($privacy == 1){echo " checked";} ?>>
+	<label for="privinput1">Privaatne (ainult ise näen)</label>
+	<input id="privinput2" name="privinput" type="radio" value="2" <?php if($privacy == 2){echo " checked";} ?>>
+	<label for="privinput2">Klubi liikmetele (sisseloginud kasutajad näevad)</label>
+	<input id="privinput3" name="privinput" type="radio" value="3" <?php if($privacy == 3){echo " checked";} ?>>
+	<label for="privinput3">Avalik (kõik näevad)</label>
+	<br>	
+	<input type="submit" id="photosubmit" name="photosubmit" value="Lae foto üles">
+  </form>
+  <p id="notice">
+  <?php
+	echo $inputerror;
+	echo $notice;
+  ?>
+  </p>
+  
 </body>
 </html>

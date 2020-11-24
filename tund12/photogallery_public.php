@@ -3,15 +3,15 @@
   require("usesession.php");
   require("fnc_photo.php");
   
-  $tolink = '<link rel="stylesheet" type="text/css" href="styles/gallery.css">' ."\n";
-  $tolink .= '<link rel="stylesheet" type="text/css" href="styles/modal.css">' ."\n";
+  $tolink = '<link rel="stylesheet" type="text/css" href="style/gallery.css">' ."\n";
+  $tolink .= '<link rel="stylesheet" type="text/css" href="style/modal.css">' ."\n";
   $tolink .= '<script src="javascript/modal.js" defer></script>' ."\n";
   
   $notice = null;
   $photouploaddir_orig = "../photoupload_orig/";
   $photouploaddir_normal = "../photoupload_normal/";
   $photouploaddir_thumb = "../photoupload_thumb/";
-  $gallerypagelimit = 3;
+  $gallerypagelimit = 5;
   $page = 1;
   $photocount = countPublicPhotos(2);
   if(!isset($_GET["page"]) or $_GET["page"] < 1){

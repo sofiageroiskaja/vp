@@ -2,7 +2,7 @@
 	require("../../../config.php");
 	require("usesession.php");
 	
-	$database = "if20_sofia1";
+	$database = "if20_sofia_ge_1";
 	$photoid = intval($_REQUEST["photo"]);
 	$type = "image/png";
 	$output = "../img/wrong.png";

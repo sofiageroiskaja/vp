@@ -1,5 +1,4 @@
 <?php
-  //session_start();
   require("classes/SessionManager.class.php");
   SessionManager::sessionStart("vp", 0, "/~sofiger/", "greeny.cs.tlu.ee");
   

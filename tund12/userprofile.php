@@ -24,7 +24,7 @@
   
   <ul>
     <li><a href="?logout=1">Logi välja</a>!</li>
-    <li><a href="home.php">Tagasi pealehele</a></li>
+    <li><a href="home.php">Avaleht</a></li>
   </ul>
   
   <hr>
